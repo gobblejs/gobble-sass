@@ -1,0 +1,10 @@
+{
+  "name": "gobble-sass",
+  "version": "0.1.0",
+  "description": "Compile SASS files with gobble",
+  "author": "Rich Harris",
+  "dependencies": {
+    "node-sass": "^0.9.3",
+    "gobble": "^0.1.1"
+  }
+}
