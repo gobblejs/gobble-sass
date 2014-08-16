@@ -7,5 +7,8 @@
     "node-sass": "^0.9.3",
     "gobble": "^0.1.1"
   },
-  "keywords": ["gobble"]
+  "keywords": ["gobble"],
+  "files": [
+    "index.js"
+  ]
 }
