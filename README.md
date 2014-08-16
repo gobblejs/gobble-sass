@@ -12,6 +12,8 @@ npm i -D gobble-sass
 
 ## Usage
 
+**gobblefile.js**
+
 ```js
 var gobble = require( 'gobble' ),
   sass = require( 'gobble-sass' );
