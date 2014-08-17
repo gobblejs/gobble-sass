@@ -12,16 +12,10 @@ npm i -D gobble-sass
 
 ## Usage
 
-**gobblefile.js**
-
 ```js
-var gobble = require( 'gobble' ),
-  sass = require( 'gobble-sass' );
-
-module.exports = gobble( 'src' )
-  .transform( sass, { src: 'scss/main.scss', dest: 'min.css' });
+var gobble = require( 'gobble' );
+module.exports = gobble( 'src' ).transform( 'sass', { src: 'scss/main.scss', dest: 'min.css' });
 ```
-
 
 ## Source code
 
@@ -30,8 +24,9 @@ module.exports = function sass ( srcDir, destDir, options, done ) {
   require( 'node-sass' ).render({
     file: require( 'path' ).join( srcDir, options.src ),
     success: function ( css ) {
-      require( 'gobble' ).file.write( destDir, options.dest, css ).then( done );
-    }
+      require( 'gobble' ).file.write( destDir, options.dest, css ).then( done, done );
+    },
+    error: done
   });
 };
 ```
