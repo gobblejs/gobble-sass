@@ -1,6 +1,6 @@
 {
   "name": "gobble-sass",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Compile SASS files with gobble",
   "author": "Rich Harris",
   "dependencies": {
