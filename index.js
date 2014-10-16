@@ -12,11 +12,17 @@ module.exports = function sass ( inputdir, outputdir, options, callback ) {
 	options.error = callback;
 
 	options.success = function ( css, map ) {
+		// source is relative to sourcemap location
+		var base = path.dirname( options.sourceMap );
+
 		// pending https://github.com/sass/node-sass/issues/363...
 		map = JSON.parse( map );
 		map.sourcesContent = map.sources.map( function ( source ) {
-			return sander.readFileSync( source ).toString();
+			return sander.readFileSync( base, source ).toString();
 		});
+
+		// sourceMappingURL must be relative, otherwise browsers
+		css = css.replace( /\/*# sourceMappingURL=([^\s]+)/, '/*# sourceMappingURL=./' + path.basename( options.dest ) + '.map' );
 
 		sander.Promise.all([
 			sander.writeFile( outputdir, options.dest + '.map', JSON.stringify( map ) ),
