@@ -1,14 +1,17 @@
 {
   "name": "gobble-sass",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Compile SASS files with gobble",
   "author": "Rich Harris",
+  "license": "MIT",
+  "repository": "https://github.com/gobblejs/gobble-sass",
   "dependencies": {
     "node-sass": "^0.9.3",
     "sander": "^0.1.6"
   },
   "keywords": [
-    "gobble"
+    "gobble",
+    "gobble-plugin"
   ],
   "files": [
     "index.js"
