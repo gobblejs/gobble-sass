@@ -1,5 +1,9 @@
 # changelog
 
+## 0.3.2
+
+* Update node-sass version
+
 ## 0.3.1
 
 * Correctly resolve paths for sourcemaps with subdirectory destinations
