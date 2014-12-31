@@ -6,8 +6,8 @@
   "license": "MIT",
   "repository": "https://github.com/gobblejs/gobble-sass",
   "dependencies": {
-    "node-sass": "^0.9.3",
-    "sander": "^0.1.6"
+    "node-sass": "^1.1.4",
+    "sander": "^0.2.1"
   },
   "keywords": [
     "gobble",
