@@ -1,5 +1,9 @@
 # changelog
 
+## 0.4.0
+
+* Update node-sass to 2.0.1, to fix io.js/node.js 0.1.2 problems
+
 ## 0.3.2
 
 * Update node-sass version

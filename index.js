@@ -7,27 +7,25 @@ module.exports = function sass ( inputdir, outputdir, options, callback ) {
 	}
 
 	options.file = path.join( inputdir, options.src );
-	options.sourceComments = 'map';
-	options.sourceMap = options.dest + '.map';
+
+	if ( options.sourceMap === undefined ) {
+		// by default, generate sourcemaps and include comments
+		options.sourceMap = options.dest + '.map';
+		options.sourceMapContents = options.sourceMapContents !== false;
+	}
+
 	options.error = callback;
 
-	options.success = function ( css, map ) {
-		// source is relative to sourcemap location
-		var base = path.dirname( options.sourceMap );
+	options.success = function ( result ) {
+		var promises = [
+			sander.writeFile( outputdir, options.dest, result.css )
+		];
 
-		// pending https://github.com/sass/node-sass/issues/363...
-		map = JSON.parse( map );
-		map.sourcesContent = map.sources.map( function ( source ) {
-			return sander.readFileSync( base, source ).toString();
-		});
+		if ( result.map ) {
+			promises.push( sander.writeFile( outputdir, options.dest + '.map', result.map ) );
+		}
 
-		// sourceMappingURL must be relative, otherwise browsers
-		css = css.replace( /\/*# sourceMappingURL=([^\s]+)/, '/*# sourceMappingURL=./' + path.basename( options.dest ) + '.map' );
-
-		sander.Promise.all([
-			sander.writeFile( outputdir, options.dest + '.map', JSON.stringify( map ) ),
-			sander.writeFile( outputdir, options.dest, css )
-		]).then( function () { callback(); }, callback );
+		sander.Promise.all( promises ).then( function () { callback(); }, callback );
 	};
 
 	require( 'node-sass' ).render( options );
