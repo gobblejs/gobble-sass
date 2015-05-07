@@ -1,5 +1,9 @@
 # changelog
 
+## 0.4.1
+
+* Make relative sourcemap path correct
+
 ## 0.4.0
 
 * Update node-sass to 2.0.1, to fix io.js/node.js 0.1.2 problems
