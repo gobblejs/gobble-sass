@@ -1,16 +1,17 @@
-module.exports = function sass ( inputdir, outputdir, options, callback ) {
-	var path = require( 'path' ),
-		sander = require( 'sander' );
+var path = require( 'path' );
+var sander = require( 'sander' );
 
+module.exports = function sass ( inputdir, outputdir, options, callback ) {
 	if ( !options.src || !options.dest ) {
 		throw new Error( 'gobble-sass requires `options.src` and `options.dest` to be set' );
 	}
 
 	options.file = path.join( inputdir, options.src );
 
-	if ( options.sourceMap === undefined ) {
+	if ( options.sourceMap !== false ) {
 		// by default, generate sourcemaps and include comments
-		options.sourceMap = options.dest + '.map';
+		options.outFile = path.join( inputdir, options.dest );
+		options.sourceMap = path.join( inputdir, options.dest + '.map' );
 		options.sourceMapContents = options.sourceMapContents !== false;
 	}
 
