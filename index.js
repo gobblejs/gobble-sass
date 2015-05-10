@@ -1,5 +1,6 @@
 var path = require( 'path' );
 var sander = require( 'sander' );
+var _sass = require( 'node-sass' );
 
 module.exports = function sass ( inputdir, outputdir, options, callback ) {
 	if ( !options.src || !options.dest ) {
@@ -10,24 +11,21 @@ module.exports = function sass ( inputdir, outputdir, options, callback ) {
 
 	if ( options.sourceMap !== false ) {
 		// by default, generate sourcemaps and include comments
-		options.outFile = path.join( inputdir, options.dest );
-		options.sourceMap = path.join( inputdir, options.dest + '.map' );
+		options.outFile = path.join( outputdir, options.dest );
+		options.sourceMap = path.join( outputdir, options.dest + '.map' );
+		options.sourceMapRoot = path.dirname( options.outFile );
 		options.sourceMapContents = options.sourceMapContents !== false;
 	}
 
-	options.error = callback;
+	_sass.render( options, function ( err, result ) {
+		if ( err ) return callback( err );
 
-	options.success = function ( result ) {
-		var promises = [
-			sander.writeFile( outputdir, options.dest, result.css )
-		];
+		var promises = [ sander.writeFile( outputdir, options.dest, result.css ) ];
 
 		if ( result.map ) {
 			promises.push( sander.writeFile( outputdir, options.dest + '.map', result.map ) );
 		}
 
 		sander.Promise.all( promises ).then( function () { callback(); }, callback );
-	};
-
-	require( 'node-sass' ).render( options );
+	});
 };
