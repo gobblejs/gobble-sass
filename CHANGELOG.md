@@ -1,5 +1,11 @@
 # changelog
 
+## 0.5.0
+
+* Upgrade to node-sass 3.0.0
+* Set `sourceRoot` property on sourcemaps to the correct (absolute) path
+* Add a test suite, finally
+
 ## 0.4.1
 
 * Make relative sourcemap path correct
