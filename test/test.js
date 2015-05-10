@@ -68,8 +68,8 @@ describe( 'gobble-sass', function () {
 			assert.deepEqual( map, {
 				version: 3,
 				file: 'out.css',
-				sourceRoot: SAMPLES + '/a',
-				sources: [ 'in.scss' ],
+				sourceRoot: OUTPUT + '/a',
+				sources: [ '../../samples/a/in.scss' ],
 				sourcesContent: [ sander.readFileSync( SAMPLES, 'a/in.scss' ).toString() ],
 				mappings: 'AAGC,IAAI,CAAC,EAAE,CAAJ;EACF,KAAK,EAJD,OAAG,GAGJ',
 				names: []
