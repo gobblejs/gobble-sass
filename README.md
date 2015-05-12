@@ -23,4 +23,4 @@ module.exports = gobble( 'src/styles' ).transform( 'sass', {
 
 ## License
 
-MIT. Copyright 2014 Rich Harris
+MIT. Copyright 2015 Rich Harris
