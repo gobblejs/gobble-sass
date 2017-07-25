@@ -1,6 +1,6 @@
 {
   "name": "gobble-sass",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Compile SASS files with gobble",
   "author": "Rich Harris",
   "license": "MIT",

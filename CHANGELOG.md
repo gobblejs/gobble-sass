@@ -1,5 +1,9 @@
 # changelog
 
+## 0.6.0
+
+* Update dependencies
+
 ## 0.5.0
 
 * Upgrade to node-sass 3.0.0
