@@ -26,6 +26,6 @@ module.exports = function sass ( inputdir, outputdir, options, callback ) {
 			promises.push( sander.writeFile( outputdir, options.dest + '.map', result.map ) );
 		}
 
-		sander.Promise.all( promises ).then( function () { callback(); }, callback );
+		Promise.all( promises ).then( function () { callback(); }, callback );
 	});
 };
