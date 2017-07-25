@@ -71,7 +71,7 @@ describe( 'gobble-sass', function () {
 				sourceRoot: OUTPUT + '/a',
 				sources: [ '../../samples/a/in.scss' ],
 				sourcesContent: [ sander.readFileSync( SAMPLES, 'a/in.scss' ).toString() ],
-				mappings: 'AAGC,IAAI,CAAC,EAAE,CAAJ;EACF,KAAK,EAJD,OAAG,GAGJ',
+				mappings: 'AAEA,AACC,IADG,CACH,EAAE,CAAC;EACF,KAAK,EAJD,OAAG,GAKP',
 				names: []
 			});
 
@@ -79,7 +79,7 @@ describe( 'gobble-sass', function () {
 		});
 	});
 
-	it( 'omits sourcemap if `options.sourceMap` === false', function () {
+	it( 'omits sourcemap if `options.sourceMap` === false', function ( done ) {
 		transformer( SAMPLES + '/a', OUTPUT + '/a', {
 			src: 'in.scss',
 			dest: 'out.css',
