@@ -71,7 +71,7 @@ describe( 'gobble-sass', function () {
 				sourceRoot: OUTPUT + '/a',
 				sources: [ '../../samples/a/in.scss' ],
 				sourcesContent: [ sander.readFileSync( SAMPLES, 'a/in.scss' ).toString() ],
-				mappings: 'AAEA,AACC,IADG,CACH,EAAE,CAAC;EACF,KAAK,EAJD,OAAG,GAKP',
+				mappings: 'AAEA,AACC,IADG,CACH,EAAE,CAAC;EACF,KAAK,EAJD,OAAY,GAKhB',
 				names: []
 			});
 
